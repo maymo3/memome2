@@ -378,15 +378,17 @@ $icon-color: ("folder-open": #007bff,"gem": #DD004B,"file": #8b8b8b,"sass": #ff0
         max-width: 1140px
         margin-top: 0
     .contents
-        // +flex
-        // +flex-between
-        display: flex
-        justify-content: space-between
+        +flex
+        +flex-between
+
     .main
         width: 68%
+
     .side
         width: 28%
         background-color: $back-color
+        // sticky -> Safari用プレフィックス 必要(´・ω・｀)
+        position: -webkit-sticky
         position: sticky
         height: 100vh
         padding: 0
