@@ -75,7 +75,7 @@ li {
       border-bottom: 2px solid #aaa;
       box-shadow: 0px 3px 0px 0px #ededed; }
     .categories a:hover {
-      box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.3);
+      box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.2);
       color: #888; }
 
 .sass::before {
