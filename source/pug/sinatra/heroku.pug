@@ -1,0 +1,109 @@
+extends ../../pug_parts/_article.pug
+
+block var
+    - var category_name = 'sinatra'
+    - var path_name = 'heroku'
+    //- - var current_i = 5
+
+block article
+    h2 はじめに
+    p プロジェクトはgitで管理する必要がある
+        | #[br]参照：#[a(href='git.html') gitを使う]
+    p Herokuの会員登録をする
+        | #[br]日本語ページ：#[a(href='https://signup.heroku.com/jp') https://signup.heroku.com/jp]
+    h2 Heroku CLIのインストール
+    p ターミナルでherokuコマンドを使えるようにするCLI(コマンドラインインターフェイス)をインストールする。
+        | #[br]インストーラのダウンロード：#[a(href='https://devcenter.heroku.com/articles/getting-started-with-ruby#set-up') Getting Started on Heroku with Ruby]
+    p またはHomebrewでインストールする
+    pre: code.shell $ brew install heroku/brew/heroku
+    h2 SSH公開鍵がなければ作る
+    p 参考：#[a(href='http://blog.infinity-dimensions.com/2012/02/heroku-public-key-add.html') HerokuでSSH公開鍵(public key)を登録する方法(と削除して再登録する方法)]
+    h3 SSH公開鍵があるか確認する
+    p 参考：#[a(href='https://git-scm.com/book/ja/v2/Git%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC-SSH-%E5%85%AC%E9%96%8B%E9%8D%B5%E3%81%AE%E4%BD%9C%E6%88%90') Gitサーバー - SSH 公開鍵の作成]
+    pre: code.shell
+        | $ cd ~/.ssh
+        | $ ls
+    p ホームディレクトリの直下にある#[code .ssh]ディレクトリ内に、#[code id_dsa]または#[code id_rsa]のような名前のファイル(公開鍵)と、同名で#[code .pub]拡張子が付いたファイル(秘密鍵)があれば、新たに鍵を作る必要はない。
+    h3 鍵を作る
+    p 参考：#[a(href='https://qiita.com/shizuma/items/2b2f873a0034839e47ce') GitHubでssh接続する手順~公開鍵・秘密鍵の生成から~]
+    pre: code.shell $ ssh-keygen -t rsa
+    p 入力を求められる
+        | #[br]1回目：ファイル名をid_rsa以外にする場合は入力
+        | #[br]2回目：パスフレーズを入力
+        | #[br]3回目：パスフレーズを再度入力
+        | #[br]必要ない場合はすべてEnterを押す。
+        | #[br]これで#[code id_rsa]と#[code id_rsa.pub]ができた。
+    h2 herokuのアカウントにログインする
+    pre: code.shell $ heroku login
+    p 自動的にブラウザでログインページが開くので、メールアドレスとパスワードを入力してログインする。
+    h2 ファイルの配置の確認
+
+    <ul class="tree">
+        <li><i class="fas fa-folder-open fa-fw"></i>MyProject
+            <ul>
+                <li><i class="fas fa-gem fa-fw"></i>app.rb</li>
+                <li><i class="fas fa-gem fa-fw"></i>config.ru</li>
+            </ul>
+        </li>
+    </ul>
+
+    p プロジェクトのルートディレクトリにアプリ本体のファイルがあることを確認する。
+        | #[br]また、同じくルートディレクトリに#[code config.ru]を置く必要がある。
+        | #[br]参照：#[a(href='rack.html') Rackを使う]
+    p クラシックスタイルでの最低限のconfig.ru
+
+    <p class="code-label">config.ru</p>
+
+    pre: code.ruby
+        | require './app'
+        | run Sinatra::Application
+
+    p プロジェクトで使っているgemはすべてbundlerで管理できるよう、#[code Gemfile]に書き出す。
+        | #[br]参照：#[a(href='bundler.html') bundlerを使う]
+    p Gemfileの例
+
+    <p class="code-label">Gemfile</p>
+
+    pre: code.ruby
+        | source "https://rubygems.org"
+        |
+        | gem 'sinatra'
+        | gem 'slim'
+        | gem 'sass'
+
+    h2 Procfileを作る
+    p 参考：#[a(href='https://devcenter.heroku.com/articles/preparing-a-codebase-for-heroku-deployment') Preparing a Codebase for Heroku Deployment]
+    p ローカル開発時に手動で打っていたアプリを起動するコマンドを、Herokuに自動で実行してもらえるようにする。
+    p プロジェクトディレクトリ直下に#[code Procfile]という名前のテキストファイルを作る
+
+    <ul class="tree">
+        <li><i class="fas fa-folder-open fa-fw"></i>MyProject
+            <ul>
+                <li><i class="fas fa-gem fa-fw"></i>app.rb</li>
+                <li><div class="marked"><i class="far fa-file fa-fw"></i>Procfile</div></li>
+                <li><i class="fas fa-gem fa-fw"></i>config.ru</li>
+            </ul>
+        </li>
+    </ul>
+
+    <p class="code-label">Procfile</p>
+
+    pre: code web: bundle exec ruby app.rb -p $PORT
+
+    p #[code rackup]ではなくアプリを直接起動する#[code ruby app.rb]のように書く。
+        | #[br]webアプリを起動するコマンドには`web:`というプロセスタイプを付ける。
+
+    h2 Heroku上にアプリを作る
+    p プロジェクトディレクトリで#[code heroku create アプリ名]する。
+
+    pre: code.shell $ heroku create kokoni-app-name
+
+    p アプリ名はアクセスするときのURL#[code https://kokoni-app-name.herokuapp.com]のように入る。
+        | #[br]アプリ名が他と被ると
+    pre: code.shell Name kokoni-app-name is already taken
+    p みたいに怒られるので使用可能なアプリ名で再度実行する。
+        | #[br]アプリ名を省略すると適当な名前が自動で割り振られる。
+
+    h2 Herokuにプロジェクトの内容を送信する
+
+    pre: code.shell $ git push heroku master

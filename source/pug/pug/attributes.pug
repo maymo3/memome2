@@ -1,0 +1,16 @@
+extends ../../pug_parts/_article.pug
+
+block var
+    - var category_name = 'pug'
+    - var path_name = 'attributes'
+    //- - var current_i = 0
+
+block article
+    p 属性は#[code ()]で囲う。複数の属性を書く場合、間の#[code ,（カンマ）]はあってもなくても良い。
+    pre: code.pug
+        | img(src="img_name.png", alt="画像の説明")
+        | img(src="img_name.png" alt="画像の説明")
+    pre: code.html= '<img src="img_name.png" alt="画像の説明">'
+    p class属性は#[code .（ピリオド）]、id属性は#[code #（シャープ）]と省略して書ける。
+    pre: code.pug header.header#header
+    pre: code.html= '<header class="header" id="header"></header>'

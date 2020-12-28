@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>memome</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&amp;display=swap">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/solarized-light.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css">
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
+    <script src="../js/highlight.pack.js"></script>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/script.js"></script>
+  </head>
+  <body>
+    <div class="left-back"></div>
+    <div class="container">
+      <div class="contents">
+        <aside class="side" id="side">
+          <div class="toggle-btn" id="toggle-btn"><span></span><span></span><span></span></div>
+          <h2 class="pao"><a href="../index.html">memome</a><i class="fas fa-chevron-right"></i> sinatra</h2>
+          <ul class="list-unstyled">
+            <li><a class="text-dark font-weight-light" href="project.html">sinatraのプロジェクトを作る</a></li>
+            <li><a class="text-dark font-weight-light" href="bundler.html">bundlerを使う</a></li>
+            <li><a class="text-dark font-weight-light" href="rack.html">Rackを使う</a></li>
+            <li><a class="text-dark font-weight-light" href="sass.html">Sassを使う</a></li>
+            <li><a class="text-dark font-weight-light" href="git.html">gitを使う</a></li>
+            <li><a class="text-dark font-weight-light" href="heroku.html">Herokuを使う</a></li>
+          </ul>
+        </aside>
+        <main class="main">
+          <article class="article">
+            <header>
+              <h1>bundlerを使う</h1>
+              <time class="timeago" datetime="2020-03-25">2020-03-25</time>
+            </header>
+            <section>
+              <div class="toc" id="toc"></div>
+              <h2>bundlerをインストールする</h2>
+              <pre><code class="shell">$ sudo gem install bundler --no-doc</code></pre>
+              <p>プロジェクトディレクトリでbundlerを使うことを表明する</p>
+              <pre><code class="shell">$ bundle init</code></pre>
+              <p>プロジェクトディレクトリにGemfileが生成される</p>
+              <ul class="tree">
+                <li><i class="fas fa-folder-open fa-fw"></i>MyProject
+                  <ul>
+                    <li><i class="fas fa-gem fa-fw"></i>app.rb</li>
+                    <li>
+                      <div class="marked"><i class="fas fa-gem fa-fw"></i>Gemfile</div>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <h2>Gemfileを編集する</h2>
+              <p><span class="add">の部分をGemfileに追記する</span></p>
+              <p class="code-label">Gemfile</p>
+              <pre><code class="ruby"># frozen_string_literal: true
+ 
+source "https://rubygems.org"
+ 
+git_source(:github) {|repo_name| "https://github.com/" }
+\# gem "rails"
+<span class="add">gem 'sinatra'</span>
+<span class="add">gem 'sinatra-contrib'</span>
+<span class="add">gem 'slim'</span>
+<span class="add">gem 'sass'</span></code></pre>
+              <h2>gemをインストールする</h2>
+              <p>gemのインストール場所を設定する</p>
+              <pre><code class="shell">$ bundle config set path 'vendor/bundle'</code></pre>
+              <p>gemをインストールする</p>
+              <pre><code class="shell">$ bundle install</code></pre>
+              <p>
+                 指定した<code>vendor/bundle</code>ディレクトリが作られ、その配下にgemがインストールされる。<br>
+                インストールしたgem一覧を記録する<code>Gemfile.lock</code>が生成される。
+              </p><ul class="tree">
+<li><i class="fas fa-folder-open fa-fw"></i>MyProject
+<ul>
+<li><i class="fas fa-gem fa-fw"></i>app.rb</li>
+<li><i class="fas fa-gem fa-fw"></i>Gemfile</li>
+<li><div class="marked"><i class="far fa-file fa-fw"></i>Gemfile.lock</div></li>
+<li><div class="marked"><i class="fas fa-folder-open fa-fw"></i>vendor</div></li>
+</ul>
+</li>
+</ul>
+              <h2>bundlerを使ってサーバを起動する</h2>
+              <p>※ipアドレスは一例</p>
+              <pre><code class="shell">$ bundle exec ruby app.rb -o 192.168.33.10</code></pre>
+            </section>
+            <div class="next-prev">
+              <div class="prevs"><a href="project.html"><i class="fas fa-chevron-left"></i></a>
+              </div>
+              <div class="nexts"><a href="rack.html"><i class="fas fa-chevron-right"></i></a>
+              </div>
+            </div>
+          </article>
+        </main>
+      </div>
+    </div>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>

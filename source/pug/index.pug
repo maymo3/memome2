@@ -1,0 +1,18 @@
+extends ../pug_parts/_layout.pug
+
+block variable
+    - var categories = ['pug','sass','sinatra']
+    - var css_path = '.'
+    - var category_name = ''
+    include ../pug_parts/_config.pug
+
+block content
+    header.header
+        h1 memome
+    .container
+        .categories
+            each category,i in categories
+                - var article = articles[category][0].path
+                a(href= category + '/' + article + '.html')
+                    span.cateName #{category}
+                    span.cateIcon(class= category)

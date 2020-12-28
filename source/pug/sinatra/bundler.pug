@@ -1,0 +1,64 @@
+extends ../../pug_parts/_article.pug
+
+block var
+    - var category_name = 'sinatra'
+    - var path_name = 'bundler'
+    //- - var current_i = 1
+
+block article
+    h2 bundlerをインストールする
+    pre: code.shell $ sudo gem install bundler --no-doc
+    p プロジェクトディレクトリでbundlerを使うことを表明する
+    pre: code.shell $ bundle init
+    p プロジェクトディレクトリにGemfileが生成される
+
+    ul.tree: li #[i.fas.fa-folder-open.fa-fw]MyProject
+        ul
+            li #[i.fas.fa-gem.fa-fw]app.rb
+            li: .marked #[i.fas.fa-gem.fa-fw]Gemfile
+
+    h2 Gemfileを編集する
+
+    p: span.add の部分をGemfileに追記する
+
+    p.code-label Gemfile
+
+    pre: code.ruby
+        | # frozen_string_literal: true
+        | 
+        | source "https://rubygems.org"
+        | 
+        | git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+
+        | \# gem "rails"
+        | #[span.add gem 'sinatra']
+        | #[span.add gem 'sinatra-contrib']
+        | #[span.add gem 'slim']
+        | #[span.add gem 'sass']
+
+    h2 gemをインストールする
+
+    p gemのインストール場所を設定する
+    pre: code.shell $ bundle config set path 'vendor/bundle'
+
+    p gemをインストールする
+    pre: code.shell $ bundle install
+
+    p 
+        | 指定した#[code vendor/bundle]ディレクトリが作られ、その配下にgemがインストールされる。#[br]
+        | インストールしたgem一覧を記録する#[code Gemfile.lock]が生成される。
+
+    <ul class="tree">
+        <li><i class="fas fa-folder-open fa-fw"></i>MyProject
+            <ul>
+                <li><i class="fas fa-gem fa-fw"></i>app.rb</li>
+                <li><i class="fas fa-gem fa-fw"></i>Gemfile</li>
+                <li><div class="marked"><i class="far fa-file fa-fw"></i>Gemfile.lock</div></li>
+                <li><div class="marked"><i class="fas fa-folder-open fa-fw"></i>vendor</div></li>
+            </ul>
+        </li>
+    </ul>
+
+    h2 bundlerを使ってサーバを起動する
+    p ※ipアドレスは一例
+    pre: code.shell $ bundle exec ruby app.rb -o 192.168.33.10

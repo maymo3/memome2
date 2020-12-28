@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>memome</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&amp;display=swap">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/solarized-light.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css">
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
+    <script src="../js/highlight.pack.js"></script>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/script.js"></script>
+  </head>
+  <body>
+    <div class="left-back"></div>
+    <div class="container">
+      <div class="contents">
+        <aside class="side" id="side">
+          <div class="toggle-btn" id="toggle-btn"><span></span><span></span><span></span></div>
+          <h2 class="pao"><a href="../index.html">memome</a><i class="fas fa-chevron-right"></i> sinatra</h2>
+          <ul class="list-unstyled">
+            <li><a class="text-dark font-weight-light" href="project.html">sinatraのプロジェクトを作る</a></li>
+            <li><a class="text-dark font-weight-light" href="bundler.html">bundlerを使う</a></li>
+            <li><a class="text-dark font-weight-light" href="rack.html">Rackを使う</a></li>
+            <li><a class="text-dark font-weight-light" href="sass.html">Sassを使う</a></li>
+            <li><a class="text-dark font-weight-light" href="git.html">gitを使う</a></li>
+            <li><a class="text-dark font-weight-light" href="heroku.html">Herokuを使う</a></li>
+          </ul>
+        </aside>
+        <main class="main">
+          <article class="article">
+            <header>
+              <h1>sinatraのプロジェクトを作る</h1>
+              <time class="timeago" datetime="2020-03-24">2020-03-24</time>
+            </header>
+            <section>
+              <div class="toc" id="toc"></div>
+              <h2>作業ディレクトリを作る</h2>
+              <pre><code class="shell">$ mkdir MyProject
+$ cd MyProject
+$ touch main.rb</code></pre>
+              <ul class="tree">
+                <li><i class="fas fa-folder-open fa-fw"></i>MyProject
+                  <ul>
+                    <li><i class="fas fa-gem fa-fw"></i>main.rb</li>
+                  </ul>
+                </li>
+              </ul>
+              <p>ホストを指定してサーバを起動する<br>※ipアドレスは一例</p>
+              <pre><code class="shell">$ ruby main.rb -o 192.168.33.10</code></pre>
+              <pre><code class="shell">$ mkdir views
+$ touch views/example.slim</code></pre>
+              <p>slimは特にrequireしなくても使える</p>
+            </section>
+            <div class="next-prev">
+              <div class="prevs">
+                <p><i class="fas fa-chevron-left"></i></p>
+              </div>
+              <div class="nexts"><a href="bundler.html"><i class="fas fa-chevron-right"></i></a>
+              </div>
+            </div>
+          </article>
+        </main>
+      </div>
+    </div>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>

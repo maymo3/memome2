@@ -1,0 +1,49 @@
+extends ../pug_parts/_layout.pug
+
+block variable
+    include ../pug_parts/_config.pug
+    - var css_path = '..'
+    block var
+    - var category_articles = articles[category_name]
+    - var current_i = 0
+    each article,i in category_articles
+        if article.path === path_name
+            - current_i = i
+    - var current_article = category_articles[current_i]
+    - var next_i = current_i + 1
+    - var prev_i = current_i - 1
+    if current_i === 0
+        - var prev_article = null
+    else
+        - var prev_article = category_articles[prev_i]
+    if current_i === category_articles.length
+        - var next_article = null
+    else
+        - var next_article = category_articles[next_i]
+
+
+block content
+    article.article
+        header
+            h1 #{current_article.title}
+            time.timeago(datetime= current_article.date) #{current_article.date}
+        section
+            #toc.toc
+                //- == toc(current_article.body)
+            block article
+        .next-prev
+            .prevs
+                if prev_article
+                    a(href= prev_article.path + '.html')
+                        i.fas.fa-chevron-left
+                else
+                    p
+                        i.fas.fa-chevron-left
+            .nexts
+                if next_article
+                    a(href= next_article.path + '.html')
+                        i.fas.fa-chevron-right
+                else
+                    p
+                        i.fas.fa-chevron-right
+        

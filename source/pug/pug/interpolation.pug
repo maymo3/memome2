@@ -1,0 +1,10 @@
+extends ../../pug_parts/_article.pug
+
+block var
+    - var category_name = 'pug'
+    - var path_name = 'interpolation'
+
+block article
+    p 文の途中に入るタグは#[code= '#[]']で囲む。
+    pre: code.pug.less= "p 文の途中に入る#[a(href='') リンク]を作る。"
+    pre: code.html= "<p>文の途中に入る<a href=''>リンク</a>を作る。</p>"

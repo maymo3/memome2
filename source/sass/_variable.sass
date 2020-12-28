@@ -1,0 +1,51 @@
+// ===== 変数 =====
+$back-color: #fafafa
+$dk-back: #ededed
+$text-color: #333
+$primary-color: #888
+$secondary-color: #aaa
+$body-f-size: 1.6rem
+$hamburger-line: 0.3rem
+$hamburger-width: 3rem
+$hamburger-height: $hamburger-width - 0.6
+$hamburger-half: ($hamburger-height - $hamburger-line) / 2
+
+$mq-xs: "(max-width: 480px)"
+$mq-sm: "(min-width: 768px)"
+$mq-md: "(min-width: 992px)"
+$mq-lg: "(min-width: 1200px)"
+
+// ===== Mixin & Extend =====
+=trans
+    transition: .3s
+=radius
+    border-radius: .5rem
+=radius-2
+    border-radius: .2rem
+
+=flex
+    display: -webkit-box
+    display: -ms-flexbox
+    display: flex
+=flex-between
+    -webkit-box-pack: justify
+    -ms-flex-pack: justify
+    justify-content: space-between
+
+=mono
+    font-family: Consolas,"Liberation Mono",Menlo,Courier,monospace
+=noto-sans
+    font-family: 'Noto Sans JP', sans-serif
+=sans
+    font-family: "Hiragino Sans W3", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif
+
+=icon($unicode,$weight)
+    font-family: "Font Awesome 5 Free"
+    content: $unicode
+    font-weight: $weight
+    margin-right: 0.5rem
+
+=iconB($unicode)
+    font-family: "Font Awesome 5 Brands"
+    content: $unicode
+    margin-right: 0.5rem

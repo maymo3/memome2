@@ -1,0 +1,57 @@
+extends ../../pug_parts/_article.pug
+
+block var
+    - var category_name = 'sinatra'
+    - var path_name = 'git'
+    //- - var current_i = 4
+
+block article
+    p 参考：#[a(href='https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup') Getting Started - First-Time Git Setup]#[br]
+        | #[a(href='https://tutorial.djangogirls.org/ja/deploy/') デプロイ！]
+    h2 gitをインストールする
+    p gitをダウンロードする
+    p 公式サイト：#[a(href='https://git-scm.com/') https://git-scm.com]
+    h2 そのOSで初めてgitを使うとき
+    p 自分のユーザ名とメールアドレスを設定する
+    pre: code.shell
+        | $ git config --global user.name "Your Name"
+        | $ git config --global user.email youremail@address.com
+    p 設定した情報と設定ファイルのある場所を確認する
+    pre: code.shell $ git config --list --show-origin
+    h2 gitを有効にする
+    p プロジェクトディレクトリに移動する
+    pre: code.shell
+        | $ cd
+        | $ cd MyProject
+    p gitを有効にする
+    pre: code.shell $ git init
+    h2 変更を記録したくないファイルを無視させる
+    p 参考：#[a(href='https://qiita.com/inabe49/items/16ee3d9d1ce68daa9fff') .gitignore の書き方]
+    p プロジェクトディレクトリ直下に#[code .gitignore]という名前のテキストファイルを作る。
+
+    <ul class="tree">
+        <li><i class="fas fa-folder-open fa-fw"></i>MyProject
+            <ul>
+                <li><i class="far fa-file fa-fw"></i>.gitignore</li>
+            </ul>
+        </li>
+    </ul>
+
+    <p class="code-label">.gitignore</p>
+
+    pre: code
+        | .DS_Store
+        | .sass-cache/
+        | vendor/
+
+    h2 ファイルの状態を確認する
+    pre: code.shell $ git status
+    p 未追跡(変更を記録することにしていない)ファイルが赤色で表示される。
+    h2 新しいファイルの追跡を開始する
+    pre: code.shell $ git add -A
+    p オプション#[code -A] allの略。すべてのファイル
+    pre: code.shell $ git status
+    p 追跡しているファイルが緑色で表示される。
+    h2 はじめてのコミット
+    pre: code.shell $ git commit -m "My first commit"
+    pre: code.shell $ git commit -m "どこをどう変更したのか"

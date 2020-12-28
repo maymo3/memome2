@@ -1,0 +1,15 @@
+extends ../../pug_parts/_article.pug
+
+block var
+    - var category_name = 'sass'
+    - var path_name = 'each'
+    //- - var current_i = 0
+
+block article
+    p @eachを使って、マップ内のすべてのキーと値のペアを繰り返し処理する
+    pre: code.sass
+        | $icon-color: ("folder-open": #007bff,"gem": #DD004B,"file": #8b8b8b)
+        |
+        | @each $icon, $color in $icon-color
+        |     .fa-\#{$icon}
+        |         color: $color

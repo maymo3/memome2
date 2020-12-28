@@ -1,0 +1,26 @@
+extends ../../pug_parts/_article.pug
+
+block var
+    - var category_name = 'sinatra'
+    - var path_name = 'project'
+    //- - var current_i = 0
+
+block article
+    h2 作業ディレクトリを作る
+    pre: code.shell
+        | $ mkdir MyProject
+        | $ cd MyProject
+        | $ touch main.rb
+
+    ul.tree
+        li #[i.fas.fa-folder-open.fa-fw]MyProject
+            ul: li #[i.fas.fa-gem.fa-fw]main.rb
+
+    p ホストを指定してサーバを起動する#[br]※ipアドレスは一例
+    
+    pre: code.shell $ ruby main.rb -o 192.168.33.10
+    pre: code.shell
+        | $ mkdir views
+        | $ touch views/example.slim
+
+    p slimは特にrequireしなくても使える

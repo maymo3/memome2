@@ -1,0 +1,405 @@
+@import _variable.sass
+
+// ===== 全体 =====
+
+html
+    font-size: 62.5%
+
+body
+    +sans
+    font-weight: 200
+    font-size: $body-f-size
+    letter-spacing: 0.03em
+    color: $text-color
+    line-height: 2
+    letter-spacing: .1rem
+
+*, *::before, *::after
+    box-sizing: border-box
+
+a:link, a:visited // , a:hover, a:active
+    color: inherit
+    text-decoration: none
+a:hover, a:active
+    text-decoration: underline
+a
+    +trans
+
+h1,h2,h3
+    +noto-sans
+
+ul,ol
+    padding-left: 0
+
+li
+    list-style: none
+
+.container
+    width: 90%
+    margin: 0 auto
+    // margin-top: $hamburger-height + 3.6rem
+
+// ==== header =====
+.header
+    h1
+        text-align: center
+        color: $secondary-color
+        margin: 5rem 0 7rem
+.categories
+    +flex
+    flex-wrap: wrap
+    // justify-content: space-between
+    justify-content: space-around
+    // @media #{$mq-sm}
+    //     justify-content: space-around
+
+    a
+        +noto-sans
+        // +radius-2
+        font-size: 2.4rem
+        color: $primary-color
+        background-color: #ccc
+        border-left: 1rem solid $primary-color
+        text-decoration: none
+        // display: block
+        display: flex
+        justify-content: space-between
+        line-height: 1
+        padding: 1.8rem 1rem 1rem 1rem
+        margin-bottom: 10%
+        transition: .15s
+        width: 13rem
+        height: 17rem
+        position: relative
+    
+        &::before
+            content: ''
+            position: absolute
+            top: 2.5rem
+            left: -1rem
+            background-color: $dk-back
+            height: 1.6rem
+            width: 1rem
+            border-bottom: 2px solid $secondary-color
+            box-shadow: 0px 3px 0px 0px $dk-back
+        &:hover
+            // box-shadow: 0 0 0 1px $primary-color
+            box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.3)
+            color: $primary-color
+$language: ("sass": '\f41e',"sinatra": '\f7bc')
+
+@each $lang, $unicode in $language
+    .#{$lang}::before
+        +iconB($unicode)
+
+    .pug::before
+        +icon('\f1b0',900)
+
+.cateName
+    -webkit-writing-mode: vertical-rl
+    -ms-writing-mode: tb-rl
+    writing-mode: vertical-rl
+    font-size: 3.5rem
+.cateIcon
+    align-self: flex-end
+    color: $secondary-color
+    font-size: 5.5rem
+
+
+// ===== サイドバー =====
+.side
+    position: fixed
+    background-color: $back-color
+    height: 100%
+    width: 250px
+    top: 0
+    left: -250px
+    z-index: 2
+    padding: 2rem
+    transition: .5s
+    ul
+        margin: 0
+    li
+        margin-bottom: 1rem
+        a
+            padding: 0 $body-f-size
+            transition: 0
+            &:hover
+                background-color: $dk-back
+    a
+        display: block
+        text-decoration: none
+        width: 90%
+        
+
+.side.open
+    left: 0
+// ハンバーガーボタン
+// 参考: https://125naroom.com/web/2958
+.toggle-btn
+    display: inline-block
+    font-size: 2.5rem
+    line-height: 1
+    margin-bottom: $body-f-size
+    position: absolute
+    width: $hamburger-width
+    height: $hamburger-height
+    transition: all .5s
+    right: - $hamburger-width - 1.8rem
+    span
+        display: inline-block
+        position: absolute
+        left: 0
+        width: 100%
+        height: $hamburger-line
+        background-color: #bbb
+        border-radius: $hamburger-line
+        transition: all .5s
+        &:nth-of-type(1)
+            top: 0
+        &:nth-of-type(2)
+            top: $hamburger-half
+        &:nth-of-type(3)
+            bottom: 0
+.open .toggle-btn span:nth-child(1) 
+    transform: translate(0, $hamburger-half) rotate(-45deg)
+.open .toggle-btn span:nth-child(2) 
+    opacity: 0
+.open .toggle-btn span:nth-child(3) 
+    transform: translate(0, -$hamburger-half) rotate(45deg)
+.pao
+    +noto-sans
+    color: $primary-color
+    font-weight: normal
+    line-height: 1.3
+    margin: 0 0 2.1rem
+    @media #{$mq-sm}
+        margin: 2.1rem 0
+    a
+        display: inline
+        &:hover
+            color: $secondary-color
+    i
+        font-size: 1.8rem
+        padding: 0 1rem
+
+        
+
+
+// ===== 記事 =====
+.article
+    min-height: 100vh
+    header
+        margin-left: $hamburger-width + 1.5rem
+        @media #{$mq-sm}
+            margin: 0
+    a
+        color: rgba(0,0,0,0.5)
+    pre
+        margin-top: 0
+    p > code
+        +mono
+        background-color: #f7f7f7
+        font-size: 1.5rem
+        padding: 0.3em
+        margin: .2rem
+        border-radius: 0.2rem
+        color: rgba(0,0,0,0.65)
+        letter-spacing: 0.05
+        word-break: break-all
+        line-height: 1.5
+        &::before
+            content: ''
+            padding-top: 0.5rem
+        &::after
+            content: ''
+            padding-bottom: 0.5rem
+    p > a
+        word-break: break-all
+    h1
+        margin: 0
+        margin-top: 2rem
+        line-height: 1.2
+
+.timeago
+    font-size: 1.4rem
+    color: rgba(0,0,0,0.65)
+    margin-top: 1rem
+    display: block
+    &::before
+        font-family: "Font Awesome 5 Free"
+        content: '\f017'
+        font-weight: 400
+        padding-right: 0.5rem
+
+.toc
+    margin: $body-f-size 0
+
+    > ol
+        +radius
+        margin: 0
+        display: inline-block
+        border: 1px solid $secondary-color
+        padding: $body-f-size
+        width: 100%
+    li
+        list-style: none
+        margin-left: 2rem
+        line-height: 1.5
+    a
+        color: rgba(0,0,0,0.65)
+        font-size: 1.4rem
+    ol:first-child::before
+        content: '目次'
+        color: $secondary-color
+.code-label
+    line-height: 1.2
+    display: inline-block
+    margin: 0
+    padding: 0.5rem 1rem
+    font-size: 1.4rem
+    background-color: #ededed
+    position: relative
+    top: 0
+    z-index: 1
+.code-label + pre
+    margin-top: -2.8rem
+.hljs
+    background-color: #f7f7f7
+    +mono
+    border-radius: 0 .2rem .2rem .2rem
+    line-height: 1.2
+    padding: $body-f-size
+    padding-top: 3.5rem
+    letter-spacing: 0
+    position: relative
+.add
+    position: relative
+    &::before
+        content: '+'
+        position: absolute
+        left: -1.2rem
+        color: #DD004B
+
+$code-label: ("shell": "terminal","sass": "sass","pug": "pug","html": "書き出されるHTML")
+
+@each $label, $lang in $code-label
+    pre > .#{$label}::before
+        content: $lang
+        +sans
+        position: absolute
+        top: 0
+        left: 0
+        display: inline-block
+        background-color: #ededed
+        color: $text-color
+        padding: 0.5rem 1rem
+        font-size: 1.4rem
+        letter-spacing: .1rem
+
+=btn($color,$border)
+    +radius
+    text-align: center
+    color: $color
+    border: 1px solid $border
+    height: 100%
+    padding: 1rem 0
+
+.next-prev
+    +flex
+    +flex-between
+    margin: $body-f-size 0
+.nexts,.prevs
+    width: 49%
+    a
+        +btn($primary-color,#b2b2b2)
+        display: inline-block
+        width: 100%
+        height: 100%
+        transition: 0.15s
+        &:hover
+            opacity: 1
+            color: #fff
+            background-color: #b2b2b2
+            opacity: 0.7
+    p
+        +btn(#ededed,#ededed)
+        margin: 0
+    i
+        font-size: 2rem
+
+// tree
+=tree-line($w,$h,$t)
+    position: absolute
+    top: $t
+    left: 0
+    width: $w
+    height: $h
+    content: ''
+    background-color: rgba(0, 0, 0, 0.3)
+.tree
+    border-bottom: 1px dashed rgba(0,0,0,0.3)
+    border-top: 1px dashed rgba(0,0,0,0.3)
+    padding: $body-f-size
+    ul
+        padding-left: 0.5rem
+    li
+        list-style-type: none
+        position: relative
+        padding: 0 0.5rem 0 1.5rem
+        &::before // 横線
+            +tree-line(1rem,0.1rem,1.5rem)
+            margin: auto
+        &::after // 縦線
+            +tree-line(0.1rem,100%,0)
+            bottom: 0
+        &:last-child::after
+            height: 1.5rem
+    i
+        margin-right: 0.5rem
+
+$icon-color: ("folder-open": #007bff,"gem": #DD004B,"file": #8b8b8b,"sass": #ff0099)
+
+@each $icon, $color in $icon-color
+    .fa-#{$icon}
+        color: $color
+
+.marked
+    +radius-2
+    background-color: #f3f3f3
+    display: inline-block
+    // border-radius: .2rem
+    padding: 0 0.8rem
+    margin-left: -0.8rem
+
+// =====レスポンシブ=====
+@media #{$mq-sm}
+    .container
+        max-width: 1140px
+        margin-top: 0
+    .contents
+        +flex
+        +flex-between
+    .main
+        width: 68%
+    .side
+        width: 28%
+        background-color: $back-color
+        position: sticky
+        height: 100vh
+        padding: 0
+
+    .toggle-btn
+        display: none
+    .left-back
+        background-color: $back-color
+        width: 20%
+        height: 100vh
+        position: fixed
+        top: 0
+        left: 0
+        float: left
+        z-index: -1
+    .toc
+        ul
+            width: auto

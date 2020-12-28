@@ -1,0 +1,9 @@
+.left-back
+.container
+    .contents
+        aside.side
+            ul.list-unstyled
+                each article in current_category
+                    //- - current_category.each do |article|
+                    li: a.text-dark.font-weight-light(href= article.title) #{article.title_ja}
+        main.main

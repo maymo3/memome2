@@ -1,0 +1,25 @@
+{
+  "name": "maymo3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "start": "npm-run-all -p watch/*",
+    "sass": "node-sass ./source/sass -o ./public/css",
+    "pug": "pug ./source/pug --out ./public --pretty",
+    "watch/sass": "watch 'npm run sass' ./source/sass",
+    "watch/pug": "watch 'npm run pug' ./source/pug"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jstransformer-markdown-it": "^2.1.0",
+    "pug": "^3.0.0",
+    "watch": "^1.0.2"
+  },
+  "devDependencies": {
+    "node-sass": "^4.14.1",
+    "npm-run-all": "^4.1.5",
+    "pug-cli": "^1.0.0-alpha6"
+  }
+}

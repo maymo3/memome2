@@ -1,0 +1,464 @@
+@charset "UTF-8";
+html {
+  font-size: 62.5%; }
+
+body {
+  font-family: "Hiragino Sans W3", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-weight: 200;
+  font-size: 1.6rem;
+  letter-spacing: 0.03em;
+  color: #333;
+  line-height: 2;
+  letter-spacing: .1rem; }
+
+*, *::before, *::after {
+  box-sizing: border-box; }
+
+a:link, a:visited {
+  color: inherit;
+  text-decoration: none; }
+
+a:hover, a:active {
+  text-decoration: underline; }
+
+a {
+  transition: .3s; }
+
+h1, h2, h3 {
+  font-family: 'Noto Sans JP', sans-serif; }
+
+ul, ol {
+  padding-left: 0; }
+
+li {
+  list-style: none; }
+
+.container {
+  width: 90%;
+  margin: 0 auto; }
+
+.header h1 {
+  text-align: center;
+  color: #aaa;
+  margin: 5rem 0 7rem; }
+
+.categories {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; }
+  .categories a {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 2.4rem;
+    color: #888;
+    background-color: #ccc;
+    border-left: 1rem solid #888;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    line-height: 1;
+    padding: 1.8rem 1rem 1rem 1rem;
+    margin-bottom: 10%;
+    transition: .15s;
+    width: 13rem;
+    height: 17rem;
+    position: relative; }
+    .categories a::before {
+      content: '';
+      position: absolute;
+      top: 2.5rem;
+      left: -1rem;
+      background-color: #ededed;
+      height: 1.6rem;
+      width: 1rem;
+      border-bottom: 2px solid #aaa;
+      box-shadow: 0px 3px 0px 0px #ededed; }
+    .categories a:hover {
+      box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.3);
+      color: #888; }
+
+.sass::before {
+  font-family: "Font Awesome 5 Brands";
+  content: "";
+  margin-right: 0.5rem; }
+
+.pug::before {
+  font-family: "Font Awesome 5 Free";
+  content: "";
+  font-weight: 900;
+  margin-right: 0.5rem; }
+
+.sinatra::before {
+  font-family: "Font Awesome 5 Brands";
+  content: "";
+  margin-right: 0.5rem; }
+
+.pug::before {
+  font-family: "Font Awesome 5 Free";
+  content: "";
+  font-weight: 900;
+  margin-right: 0.5rem; }
+
+.cateName {
+  -webkit-writing-mode: vertical-rl;
+  -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
+  font-size: 3.5rem; }
+
+.cateIcon {
+  align-self: flex-end;
+  color: #aaa;
+  font-size: 5.5rem; }
+
+.side {
+  position: fixed;
+  background-color: #fafafa;
+  height: 100%;
+  width: 250px;
+  top: 0;
+  left: -250px;
+  z-index: 2;
+  padding: 2rem;
+  transition: .5s; }
+  .side ul {
+    margin: 0; }
+  .side li {
+    margin-bottom: 1rem; }
+    .side li a {
+      padding: 0 1.6rem;
+      transition: 0; }
+      .side li a:hover {
+        background-color: #ededed; }
+  .side a {
+    display: block;
+    text-decoration: none;
+    width: 90%; }
+
+.side.open {
+  left: 0; }
+
+.toggle-btn {
+  display: inline-block;
+  font-size: 2.5rem;
+  line-height: 1;
+  margin-bottom: 1.6rem;
+  position: absolute;
+  width: 3rem;
+  height: 2.4rem;
+  transition: all .5s;
+  right: -4.8rem; }
+  .toggle-btn span {
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 0.3rem;
+    background-color: #bbb;
+    border-radius: 0.3rem;
+    transition: all .5s; }
+    .toggle-btn span:nth-of-type(1) {
+      top: 0; }
+    .toggle-btn span:nth-of-type(2) {
+      top: 1.05rem; }
+    .toggle-btn span:nth-of-type(3) {
+      bottom: 0; }
+
+.open .toggle-btn span:nth-child(1) {
+  transform: translate(0, 1.05rem) rotate(-45deg); }
+
+.open .toggle-btn span:nth-child(2) {
+  opacity: 0; }
+
+.open .toggle-btn span:nth-child(3) {
+  transform: translate(0, -1.05rem) rotate(45deg); }
+
+.pao {
+  font-family: 'Noto Sans JP', sans-serif;
+  color: #888;
+  font-weight: normal;
+  line-height: 1.3;
+  margin: 0 0 2.1rem; }
+  @media (min-width: 768px) {
+    .pao {
+      margin: 2.1rem 0; } }
+  .pao a {
+    display: inline; }
+    .pao a:hover {
+      color: #aaa; }
+  .pao i {
+    font-size: 1.8rem;
+    padding: 0 1rem; }
+
+.article {
+  min-height: 100vh; }
+  .article header {
+    margin-left: 4.5rem; }
+    @media (min-width: 768px) {
+      .article header {
+        margin: 0; } }
+  .article a {
+    color: rgba(0, 0, 0, 0.5); }
+  .article pre {
+    margin-top: 0; }
+  .article p > code {
+    font-family: Consolas,"Liberation Mono",Menlo,Courier,monospace;
+    background-color: #f7f7f7;
+    font-size: 1.5rem;
+    padding: 0.3em;
+    margin: .2rem;
+    border-radius: 0.2rem;
+    color: rgba(0, 0, 0, 0.65);
+    letter-spacing: 0.05;
+    word-break: break-all;
+    line-height: 1.5; }
+    .article p > code::before {
+      content: '';
+      padding-top: 0.5rem; }
+    .article p > code::after {
+      content: '';
+      padding-bottom: 0.5rem; }
+  .article p > a {
+    word-break: break-all; }
+  .article h1 {
+    margin: 0;
+    margin-top: 2rem;
+    line-height: 1.2; }
+
+.timeago {
+  font-size: 1.4rem;
+  color: rgba(0, 0, 0, 0.65);
+  margin-top: 1rem;
+  display: block; }
+  .timeago::before {
+    font-family: "Font Awesome 5 Free";
+    content: '\f017';
+    font-weight: 400;
+    padding-right: 0.5rem; }
+
+.toc {
+  margin: 1.6rem 0; }
+  .toc > ol {
+    border-radius: .5rem;
+    margin: 0;
+    display: inline-block;
+    border: 1px solid #aaa;
+    padding: 1.6rem;
+    width: 100%; }
+  .toc li {
+    list-style: none;
+    margin-left: 2rem;
+    line-height: 1.5; }
+  .toc a {
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 1.4rem; }
+  .toc ol:first-child::before {
+    content: '目次';
+    color: #aaa; }
+
+.code-label {
+  line-height: 1.2;
+  display: inline-block;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  font-size: 1.4rem;
+  background-color: #ededed;
+  position: relative;
+  top: 0;
+  z-index: 1; }
+
+.code-label + pre {
+  margin-top: -2.8rem; }
+
+.hljs {
+  background-color: #f7f7f7;
+  font-family: Consolas,"Liberation Mono",Menlo,Courier,monospace;
+  border-radius: 0 .2rem .2rem .2rem;
+  line-height: 1.2;
+  padding: 1.6rem;
+  padding-top: 3.5rem;
+  letter-spacing: 0;
+  position: relative; }
+
+.add {
+  position: relative; }
+  .add::before {
+    content: '+';
+    position: absolute;
+    left: -1.2rem;
+    color: #DD004B; }
+
+pre > .shell::before {
+  content: "terminal";
+  font-family: "Hiragino Sans W3", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  background-color: #ededed;
+  color: #333;
+  padding: 0.5rem 1rem;
+  font-size: 1.4rem;
+  letter-spacing: .1rem; }
+
+pre > .sass::before {
+  content: "sass";
+  font-family: "Hiragino Sans W3", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  background-color: #ededed;
+  color: #333;
+  padding: 0.5rem 1rem;
+  font-size: 1.4rem;
+  letter-spacing: .1rem; }
+
+pre > .pug::before {
+  content: "pug";
+  font-family: "Hiragino Sans W3", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  background-color: #ededed;
+  color: #333;
+  padding: 0.5rem 1rem;
+  font-size: 1.4rem;
+  letter-spacing: .1rem; }
+
+pre > .html::before {
+  content: "書き出されるHTML";
+  font-family: "Hiragino Sans W3", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  background-color: #ededed;
+  color: #333;
+  padding: 0.5rem 1rem;
+  font-size: 1.4rem;
+  letter-spacing: .1rem; }
+
+.next-prev {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 1.6rem 0; }
+
+.nexts, .prevs {
+  width: 49%; }
+  .nexts a, .prevs a {
+    border-radius: .5rem;
+    text-align: center;
+    color: #888;
+    border: 1px solid #b2b2b2;
+    height: 100%;
+    padding: 1rem 0;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    transition: 0.15s; }
+    .nexts a:hover, .prevs a:hover {
+      opacity: 1;
+      color: #fff;
+      background-color: #b2b2b2;
+      opacity: 0.7; }
+  .nexts p, .prevs p {
+    border-radius: .5rem;
+    text-align: center;
+    color: #ededed;
+    border: 1px solid #ededed;
+    height: 100%;
+    padding: 1rem 0;
+    margin: 0; }
+  .nexts i, .prevs i {
+    font-size: 2rem; }
+
+.tree {
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.3);
+  border-top: 1px dashed rgba(0, 0, 0, 0.3);
+  padding: 1.6rem; }
+  .tree ul {
+    padding-left: 0.5rem; }
+  .tree li {
+    list-style-type: none;
+    position: relative;
+    padding: 0 0.5rem 0 1.5rem; }
+    .tree li::before {
+      position: absolute;
+      top: 1.5rem;
+      left: 0;
+      width: 1rem;
+      height: 0.1rem;
+      content: '';
+      background-color: rgba(0, 0, 0, 0.3);
+      margin: auto; }
+    .tree li::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0.1rem;
+      height: 100%;
+      content: '';
+      background-color: rgba(0, 0, 0, 0.3);
+      bottom: 0; }
+    .tree li:last-child::after {
+      height: 1.5rem; }
+  .tree i {
+    margin-right: 0.5rem; }
+
+.fa-folder-open {
+  color: #007bff; }
+
+.fa-gem {
+  color: #DD004B; }
+
+.fa-file {
+  color: #8b8b8b; }
+
+.fa-sass {
+  color: #ff0099; }
+
+.marked {
+  border-radius: .2rem;
+  background-color: #f3f3f3;
+  display: inline-block;
+  padding: 0 0.8rem;
+  margin-left: -0.8rem; }
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 1140px;
+    margin-top: 0; }
+  .contents {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between; }
+  .main {
+    width: 68%; }
+  .side {
+    width: 28%;
+    background-color: #fafafa;
+    position: sticky;
+    height: 100vh;
+    padding: 0; }
+  .toggle-btn {
+    display: none; }
+  .left-back {
+    background-color: #fafafa;
+    width: 20%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    float: left;
+    z-index: -1; }
+  .toc ul {
+    width: auto; } }

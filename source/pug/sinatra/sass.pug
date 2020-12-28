@@ -1,0 +1,45 @@
+extends ../../pug_parts/_article.pug
+
+block var
+    - var category_name = 'sinatra'
+    - var path_name = 'sass'
+
+block article
+    p 参考：#[a(href= 'https://github.com/sass/ruby-sass') sass / ruby-sass]
+    p Rackに対応しているWebフレームワーク(sinatra含む)では以下の方法でgem 'sass'を使うことができる。
+    h2 gemをインストールする
+    p まずはgemをインストールする。
+    pre: code.shell $ gem install sass
+    p bundlerを使用している場合は、
+    <p class="code-label">Gemfile</p>
+    pre: code.ruby gem 'sass'
+    p をGemfileに追記して
+    pre: code.shell $ bundle install
+    h2 config.ruに設定を書く
+    <p class="code-label">config.ru</p>
+    pre: code.ruby
+        | require 'sass/plugin/rack'
+        | use Sass::Plugin::Rack
+    h2 sassを置くディレクトリを作る
+    <ul class="tree">
+        <li><i class="fas fa-folder-open fa-fw"></i>My Project
+            <ul>
+                <li><i class="fas fa-folder-open fa-fw"></i>public
+                    <ul>
+                        <li><i class="fas fa-folder-open fa-fw"></i>stylesheets
+                            <ul>
+                                <li><i class="fas fa-folder-open fa-fw"></i>sass
+                                    <ul>
+                                        <li><i class="fab fa-sass"></i>style.sass</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    p
+        | #[code public/stylesheets/sass]に置いたすべてのsassファイルが、リクエストの度に#[code public/stylesheets]以下のcssファイルに変換される。#[br]
+        | 例えば#[code public/stylesheets/sass]に#[code style.sass]を作った場合、#[code public/stylesheets]に#[code style.css]が生成される。

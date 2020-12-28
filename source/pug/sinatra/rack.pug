@@ -1,0 +1,61 @@
+extends ../../pug_parts/_article.pug
+
+block var
+    - var category_name = 'sinatra'
+    - var path_name = 'rack'
+    //- - var current_i = 2
+
+block article
+    p 参考：#[a(href="http://sinatrarb.com/intro-ja.html") Sinatra: README (Japanese)]
+
+    p config.ruを作る
+    <ul class="tree">
+        <li><i class="fas fa-folder-open fa-fw"></i>MyProject
+            <ul>
+                <li><i class="fas fa-gem fa-fw"></i>app.rb</li>
+                <li><div class="marked"><i class="fas fa-gem fa-fw"></i>config.ru</div></li>
+                <li><i class="fas fa-gem fa-fw"></i>Gemfile</li>
+                <li><i class="far fa-file fa-fw"></i>Gemfile.lock</li>
+                <li><i class="fas fa-folder-open fa-fw"></i>vendor</li>
+            </ul>
+        </li>
+    </ul>
+
+    h2 クラシックスタイルの場合
+
+    <p class="code-label">app.rb</p>
+    pre: code.ruby
+        | require 'sinatra'
+        |
+        | get '/' do
+        |     'Hello world!'
+        | end
+
+    <p class="code-label">config.ru</p>
+    pre: code.ruby
+        | require './app'
+        | run Sinatra::Application
+
+    h2 モジュラースタイルの場合
+
+    <p class="code-label">app.rb</p>
+    pre: code.ruby
+        | require 'sinatra/base'
+        |
+        | class MyApp &lt; Sinatra::Base
+        |     get '/' do
+        |         'Hello world!'
+        |     end
+        | end
+
+    <p class="code-label">config.ru</p>
+    pre: code.ruby
+        | require './app'
+        | run MyApp
+
+    h2 サーバの起動
+    pre: code.shell $ rackup -p 4567
+    p -pオプション…ポートの指定
+
+    p bundler + rackでサーバを起動
+    pre: code.shell $ bundle exec rackup -p 4567

@@ -1,0 +1,16 @@
+extends ../../pug_parts/_article.pug
+
+block var
+    - var category_name = 'sass'
+    - var path_name = 'not'
+    //- - var current_i = 1
+
+block article
+    p notを使って、一部を除いて効果を適用する
+    pre: code.sass
+        | // 変数
+        | $primary-color: #00D6D6
+        |
+        | // .linkクラスのついていないaタグがホーバー状態のとき
+        | a:not(.link):hover
+        |     color: $primary-color
