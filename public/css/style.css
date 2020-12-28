@@ -435,11 +435,7 @@ pre > .html::before {
     max-width: 1140px;
     margin-top: 0; }
   .contents {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
     justify-content: space-between; }
   .main {
     width: 68%; }

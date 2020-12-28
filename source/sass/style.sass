@@ -378,8 +378,10 @@ $icon-color: ("folder-open": #007bff,"gem": #DD004B,"file": #8b8b8b,"sass": #ff0
         max-width: 1140px
         margin-top: 0
     .contents
-        +flex
-        +flex-between
+        // +flex
+        // +flex-between
+        display: flex
+        justify-content: space-between
     .main
         width: 68%
     .side
