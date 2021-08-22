@@ -106,6 +106,12 @@ li {
   margin-right: 0.5rem;
 }
 
+.npm::before {
+  font-family: "Font Awesome 5 Brands";
+  content: "\f3d4";
+  margin-right: 0.5rem;
+}
+
 .sinatra::before {
   font-family: "Font Awesome 5 Brands";
   content: "\f7bc";
@@ -116,6 +122,12 @@ li {
   font-family: "Font Awesome 5 Free";
   content: "\f1b0";
   font-weight: 900;
+  margin-right: 0.5rem;
+}
+
+.npm::before {
+  font-family: "Font Awesome 5 Brands";
+  content: "\f3d4";
   margin-right: 0.5rem;
 }
 

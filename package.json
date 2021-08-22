@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "start": "run-p watch/*",
-    "sass": "sass --no-source-map ./source/sass:./public/css",
+    "sass": "sass --no-source-map source/sass:public/css",
     "pug": "pug ./source/pug --out ./public --pretty",
     "watch/sass": "watch 'npm run sass' ./source/sass",
     "watch/pug": "watch 'npm run pug' ./source/pug"
@@ -13,7 +13,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "jstransformer-markdown-it": "^2.1.0",
     "pug": "^3.0.2",
     "watch": "^1.0.2"
   },
