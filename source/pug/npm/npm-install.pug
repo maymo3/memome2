@@ -5,4 +5,59 @@ block var
     - var path_name = 'npm-install'
 
 block article
+    h2 概要
     p 公式サイト：#[a(href='https://nodejs.org/ja/download/') ダウンロード | Node.js]
+    p Node.jsをインストールするとnpmも一緒に入る。
+    p 上記公式サイトからインストーラをダウンロードしてインストールするか、Homebrewなどのパッケージマネージャを使う。
+    p ここではHomebrewを使って→インストールしたnodebrewで→Node.jsをインストールする。
+    aside
+        p 備考：既にNode.jsが入っているがnodebrewで管理したくなった場合#[br]
+            a(href='https://qiita.com/wagi0716/items/94193a80502f9d81a9e0') 【Mac版】node.jsのアンインストールと再インストール手順メモ - Qiita
+    h2 Homebrewをインストールする
+    p 公式サイト：#[a(href='https://brew.sh/index_ja') macOS（またはLinux）用パッケージマネージャー — Homebrew]
+    p 以下をターミナルにコピペしてEnter。
+    pre: code.shell % /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    h2 nodebrewをインストールする
+    p 参考：#[a(href='https://qiita.com/takeshi81/items/805f504503cd93151ca6') Node.jsの管理をHomebrewからnodebrewに変える - Qiita]
+    p Homebrewを使ってnodebrewをインストールする
+    pre: code.shell % brew install nodebrew
+    p nodebrewの初期設定を行う
+    pre: code.shell % /usr/local/opt/nodebrew/bin/nodebrew setup_dirs
+    p デフォルトのシェルを確認する
+    p 参考：#[a(href='https://qiita.com/k3ntar0/items/eb8cdbd8eba9da388def') 【zsh, bash】macでPATHを通す方法  - not found と出てしまったら - Qiita]
+    pre: code.shell 
+        | % echo $SHELL
+        | /bin/zsh
+    p デフォルトのシェルがzshだった場合、`~/.zshrc`ファイルを開くか、まだない場合は作成し、以下を追記する。
+    p.code-label .zshrc
+    pre: code export PATH=$HOME/.nodebrew/current/bin:$PATH
+    p 変更を反映する
+    pre: code.shell % source ~/.zshrc
+    p ヘルプを表示してnodebrewが使えるか確認する
+    pre: code.shell % nodebrew help
+    h2 Node.jsをインストールする
+    p nodebrewを使ってNode.jsの最新版をインストールする。
+    pre: code.shell % nodebrew install-binary latest
+    p nodebrewでインストールしたNode.jsのバージョンを確認する。
+    pre: code.shell
+        | % nodebrew ls
+        | v16.7.0
+        | 
+        | current: none
+    p 使うバージョンを設定する。最新版を使う場合
+    pre: code.shell % nodebrew use latest
+    p インストールしたNode.jsのバージョン一覧と現在使っているバージョンを表示する
+    pre: code.shell
+        | % nodebrew ls
+        | v16.7.0
+        | current: v16.7.0
+    p nodeコマンドが使えるかバージョンを表示して確認
+    pre: code.shell
+        | % node -v
+        | v16.7.0
+    p npm自体のバージョンの確認
+    pre: code.shell
+        | % npm -v
+        | 7.20.3
+
+

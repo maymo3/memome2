@@ -32,7 +32,55 @@
             </header>
             <section>
               <div class="toc" id="toc"></div>
+              <h2>概要</h2>
               <p>公式サイト：<a href="https://nodejs.org/ja/download/">ダウンロード | Node.js</a></p>
+              <p>Node.jsをインストールするとnpmも一緒に入る。</p>
+              <p>上記公式サイトからインストーラをダウンロードしてインストールするか、Homebrewなどのパッケージマネージャを使う。</p>
+              <p>ここではHomebrewを使って→インストールしたnodebrewで→Node.jsをインストールする。</p>
+              <aside>
+                <p>備考：既にNode.jsが入っているがnodebrewで管理したくなった場合<br><a href="https://qiita.com/wagi0716/items/94193a80502f9d81a9e0">【Mac版】node.jsのアンインストールと再インストール手順メモ - Qiita</a></p>
+              </aside>
+              <h2>Homebrewをインストールする</h2>
+              <p>公式サイト：<a href="https://brew.sh/index_ja">macOS（またはLinux）用パッケージマネージャー — Homebrew</a></p>
+              <p>以下をターミナルにコピペしてEnter。</p>
+              <pre><code class="shell">% /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></pre>
+              <h2>nodebrewをインストールする</h2>
+              <p>参考：<a href="https://qiita.com/takeshi81/items/805f504503cd93151ca6">Node.jsの管理をHomebrewからnodebrewに変える - Qiita</a></p>
+              <p>Homebrewを使ってnodebrewをインストールする</p>
+              <pre><code class="shell">% brew install nodebrew</code></pre>
+              <p>nodebrewの初期設定を行う</p>
+              <pre><code class="shell">% /usr/local/opt/nodebrew/bin/nodebrew setup_dirs</code></pre>
+              <p>デフォルトのシェルを確認する</p>
+              <p>参考：<a href="https://qiita.com/k3ntar0/items/eb8cdbd8eba9da388def">【zsh, bash】macでPATHを通す方法  - not found と出てしまったら - Qiita</a></p>
+              <pre><code class="shell"> % echo $SHELL
+/bin/zsh</code></pre>
+              <p>デフォルトのシェルがzshだった場合、`~/.zshrc`ファイルを開くか、まだない場合は作成し、以下を追記する。</p>
+              <p class="code-label">.zshrc</p>
+              <pre><code>export PATH=$HOME/.nodebrew/current/bin:$PATH</code></pre>
+              <p>変更を反映する</p>
+              <pre><code class="shell">% source ~/.zshrc</code></pre>
+              <p>ヘルプを表示してnodebrewが使えるか確認する</p>
+              <pre><code class="shell">% nodebrew help</code></pre>
+              <h2>Node.jsをインストールする</h2>
+              <p>nodebrewを使ってNode.jsの最新版をインストールする。</p>
+              <pre><code class="shell">% nodebrew install-binary latest</code></pre>
+              <p>nodebrewでインストールしたNode.jsのバージョンを確認する。</p>
+              <pre><code class="shell">% nodebrew ls
+v16.7.0
+ 
+current: none</code></pre>
+              <p>使うバージョンを設定する。最新版を使う場合</p>
+              <pre><code class="shell">% nodebrew use latest</code></pre>
+              <p>インストールしたNode.jsのバージョン一覧と現在使っているバージョンを表示する</p>
+              <pre><code class="shell">% nodebrew ls
+v16.7.0
+current: v16.7.0</code></pre>
+              <p>nodeコマンドが使えるかバージョンを表示して確認</p>
+              <pre><code class="shell">% node -v
+v16.7.0</code></pre>
+              <p>npm自体のバージョンの確認</p>
+              <pre><code class="shell">% npm -v
+7.20.3</code></pre>
             </section>
             <div class="next-prev">
               <div class="prevs">
