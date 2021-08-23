@@ -201,6 +201,14 @@ $language: ("sass": '\f41e',"sinatra": '\f7bc')
             margin: 0
     a
         color: rgba(0,0,0,0.5)
+        padding: .5rem
+        transition: all .3s
+        border: solid 1px #fff
+        border-bottom: solid 1px $secondary-color
+        font-size: 1.5rem
+        &:hover
+            border: solid 1px $secondary-color
+            text-decoration: none
     pre
         margin-top: 0
     p > code
@@ -226,6 +234,25 @@ $language: ("sass": '\f41e',"sinatra": '\f7bc')
         margin: 0
         margin-top: 2rem
         line-height: 1.2
+    aside
+        display: inline-block
+        font-size: 1.4rem
+        border: dotted 1px $secondary-color
+        padding: 1rem 2rem
+        border-radius: 5px
+        margin: 1rem 0
+        p
+            margin: 0
+            color: $primary-color
+        a
+            font-size: 1.2rem
+            border: none
+            text-decoration: underline
+            color: &$secondary-color
+            &:hover
+                border: none
+                text-decoration: underline
+                color: $text-color
 
 .timeago
     font-size: 1.4rem
@@ -255,9 +282,15 @@ $language: ("sass": '\f41e',"sinatra": '\f7bc')
     a
         color: rgba(0,0,0,0.65)
         font-size: 1.4rem
+        text-decoration: none
+        border: none
+        &:hover
+            border: none
+            text-decoration: underline
     ol:first-child::before
         content: '目次'
         color: $secondary-color
+
 .code-label
     line-height: 1.2
     display: inline-block
