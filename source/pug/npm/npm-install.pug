@@ -28,7 +28,7 @@ block article
     pre: code.shell 
         | % echo $SHELL
         | /bin/zsh
-    p デフォルトのシェルがzshだった場合、`~/.zshrc`ファイルを開くか、まだない場合は作成し、以下を追記する。
+    p デフォルトのシェルがzshだった場合、#[code ~/.zshrc]ファイルを開くか、まだない場合は作成し、以下を追記する。
     p.code-label .zshrc
     pre: code export PATH=$HOME/.nodebrew/current/bin:$PATH
     p 変更を反映する
