@@ -29,23 +29,37 @@
         <main class="main">
           <article class="article">
             <header>
-              <h1>notを使う</h1>
-              <time class="timeago" datetime="2020-12-07">2020-12-07</time>
+              <h1>割り算</h1>
+              <time class="timeago" datetime="2021-08-23">2021-08-23</time>
             </header>
             <section>
               <div class="toc" id="toc"></div>
-              <p>notを使って、一部を除いて効果を適用する</p>
-              <pre><code class="sass">// 変数
-$primary-color: #00D6D6
+              <h2>旧バージョンでの書き方</h2>
+              <p>以前は<code>/</code>（スラッシュ）で除算ができた。sassのバージョン2.0.0からは使えなくなる。</p>
+              <pre><code class="sass">$var1: 2rem
+$var2: 0.3rem
+ 
+.test
+    top: ($var1 - $var2) / 2</code></pre>
+              <h2>新しい書き方（推奨）</h2>
+              <p>割り算はmath.div()関数で行う。先に<code>@use "sass:math"</code>でmathモジュールを読み込む。</p>
+              <pre><code class="sass">@use "sass:math"
 
-// .linkクラスのついていないaタグがホーバー状態のとき
-a:not(.link):hover
-    color: $primary-color</code></pre>
+$var1: 2rem
+$var2: 0.3rem
+ 
+.test
+    top: math.div($var1 - $var2, 2)</code></pre>
+              <p>コンパイル後</p>
+              <pre><code class="css">.test {
+  top: 0.85rem;
+}</code></pre>
             </section>
             <div class="next-prev">
-              <div class="prevs"><a href="each.html"><i class="fas fa-chevron-left"></i></a>
+              <div class="prevs"><a href="not.html"><i class="fas fa-chevron-left"></i></a>
               </div>
-              <div class="nexts"><a href="division.html"><i class="fas fa-chevron-right"></i></a>
+              <div class="nexts">
+                <p><i class="fas fa-chevron-right"></i></p>
               </div>
             </div>
           </article>

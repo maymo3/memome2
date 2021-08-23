@@ -1,0 +1,30 @@
+extends ../../pug_parts/_article.pug
+
+block var
+    - var category_name = 'sass'
+    - var path_name = 'division'
+
+block article
+    h2 旧バージョンでの書き方
+    p 以前は#[code /]（スラッシュ）で除算ができた。sassのバージョン2.0.0からは使えなくなる。
+    pre: code.sass
+        | $var1: 2rem
+        | $var2: 0.3rem
+        | 
+        | .test
+        |     top: ($var1 - $var2) / 2
+    h2 新しい書き方（推奨）
+    p 割り算はmath.div()関数で行う。先に#[code @use "sass:math"]でmathモジュールを読み込む。
+    pre: code.sass
+        | @use "sass:math"
+        |
+        | $var1: 2rem
+        | $var2: 0.3rem
+        | 
+        | .test
+        |     top: math.div($var1 - $var2, 2)
+    p コンパイル後
+    pre: code.css
+        | .test {
+        |   top: 0.85rem;
+        | }
