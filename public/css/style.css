@@ -314,7 +314,7 @@ li {
   font-size: 1.2rem;
   border: none;
   text-decoration: underline;
-  color: .article aside a #aaa;
+  color: #aaa;
 }
 .article aside a:hover {
   border: none;

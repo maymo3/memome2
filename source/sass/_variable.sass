@@ -1,3 +1,5 @@
+@use "sass:math"
+
 // ===== 変数 =====
 $back-color: #fafafa
 $dk-back: #ededed
@@ -8,7 +10,7 @@ $body-f-size: 1.6rem
 $hamburger-line: 0.3rem
 $hamburger-width: 3rem
 $hamburger-height: $hamburger-width - 0.6
-$hamburger-half: ($hamburger-height - $hamburger-line) / 2
+$hamburger-half: math.div($hamburger-height - $hamburger-line, 2)
 
 $mq-xs: "(max-width: 480px)"
 $mq-sm: "(min-width: 768px)"
