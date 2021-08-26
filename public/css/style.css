@@ -4,12 +4,12 @@ html {
 }
 
 body {
-  font-family: "Hiragino Sans W3", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-  font-weight: 200;
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 300;
   font-size: 1.6rem;
   letter-spacing: 0.03em;
   color: #333;
-  line-height: 2;
+  line-height: 1.8;
   letter-spacing: 0.1rem;
   background-color: #fff;
 }
@@ -245,6 +245,32 @@ li {
   padding: 0 1rem;
 }
 
+/* * * * * 記事 * * * * */
+.article h1 {
+  margin-top: 5rem;
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+.article h2 {
+  margin-top: 7rem;
+  margin-bottom: 3rem;
+  line-height: 1;
+}
+.article pre {
+  margin-top: 0;
+  margin-bottom: 4rem;
+}
+
+.timeago, .toc {
+  margin-bottom: 7rem;
+}
+
+.toc ol:first-child::before {
+  position: relative;
+  top: -0.5rem;
+  left: 0;
+}
+
 .article {
   min-height: 100vh;
 }
@@ -257,7 +283,7 @@ li {
   }
 }
 .article a {
-  color: rgba(0, 0, 0, 0.5);
+  color: #888;
   padding: 0.5rem;
   transition: all 0.3s;
   border: solid 1px #fff;
@@ -265,11 +291,9 @@ li {
   font-size: 1.5rem;
 }
 .article a:hover {
-  border: solid 1px #aaa;
+  border: solid 1px #ccc;
   text-decoration: none;
-}
-.article pre {
-  margin-top: 0;
+  color: #aaa;
 }
 .article p > code {
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
@@ -295,11 +319,13 @@ li {
   word-break: break-all;
 }
 .article h1 {
-  margin: 0;
-  margin-top: 2rem;
-  line-height: 1.2;
+  font-family: "Shippori Mincho", serif;
+}
+.article h2 {
+  font-weight: 400;
 }
 .article aside {
+  font-family: "Shippori Mincho", serif;
   display: inline-block;
   font-size: 1.4rem;
   border: dotted 1px #aaa;
@@ -313,20 +339,12 @@ li {
 }
 .article aside a {
   font-size: 1.2rem;
-  border: none;
-  text-decoration: underline;
-  color: #aaa;
-}
-.article aside a:hover {
-  border: none;
-  text-decoration: underline;
-  color: #333;
 }
 
 .timeago {
+  font-family: "Shippori Mincho", serif;
   font-size: 1.4rem;
   color: rgba(0, 0, 0, 0.65);
-  margin-top: 1rem;
   display: block;
 }
 .timeago::before {
@@ -336,16 +354,12 @@ li {
   padding-right: 0.5rem;
 }
 
-.toc {
-  margin: 1.6rem 0;
-}
 .toc > ol {
   border-radius: 0.5rem;
   margin: 0;
   display: inline-block;
   border: 1px solid #aaa;
   padding: 1.6rem;
-  width: 100%;
 }
 .toc li {
   list-style: none;
@@ -405,7 +419,7 @@ li {
 }
 
 pre > .shell::before {
-  content: "terminal";
+  content: "ターミナル";
   font-family: "Hiragino Sans W3", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
   position: absolute;
   top: 0;
@@ -584,7 +598,7 @@ pre > .css::before {
 
 @media (min-width: 768px) {
   .container {
-    max-width: 1140px;
+    max-width: 960px;
     margin-top: 0;
   }
 

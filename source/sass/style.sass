@@ -6,12 +6,12 @@ html
     font-size: 62.5%
 
 body
-    +sans
-    font-weight: 200
+    +noto-sans
+    font-weight: 300
     font-size: $body-f-size
     letter-spacing: 0.03em
     color: $text-color
-    line-height: 2
+    line-height: 1.8
     letter-spacing: .1rem
     background-color: #fff
     
@@ -187,8 +187,35 @@ $language: ("sass": '\f41e',"sinatra": '\f7bc')
 
         
 
+/* * * * * 記事 * * * * */
 
-// ===== 記事 =====
+// = = = = 間隔 = = = =
+
+.article
+    h1
+        margin-top: 5rem
+        margin-bottom: 1rem
+        line-height: 1
+
+    h2
+        margin-top: 7rem
+        margin-bottom: 3rem
+        line-height: 1
+    pre
+        margin-top: 0
+        margin-bottom: 4rem
+
+.timeago, .toc
+    margin-bottom: 7rem
+    
+.toc
+    ol:first-child::before
+        position: relative
+        top: -0.5rem
+        left: 0
+
+// = = = = スタイル = = = =
+
 .article
     min-height: 100vh
     header
@@ -196,17 +223,16 @@ $language: ("sass": '\f41e',"sinatra": '\f7bc')
         @media #{$mq-sm}
             margin: 0
     a
-        color: rgba(0,0,0,0.5)
+        color: $primary-color
         padding: .5rem
         transition: all .3s
         border: solid 1px #fff
         border-bottom: solid 1px $secondary-color
         font-size: 1.5rem
         &:hover
-            border: solid 1px $secondary-color
+            border: solid 1px #ccc
             text-decoration: none
-    pre
-        margin-top: 0
+            color: $secondary-color
     p > code
         +mono
         background-color: #f7f7f7
@@ -227,10 +253,11 @@ $language: ("sass": '\f41e',"sinatra": '\f7bc')
     p > a
         word-break: break-all
     h1
-        margin: 0
-        margin-top: 2rem
-        line-height: 1.2
+        +serif
+    h2
+        font-weight: 400
     aside
+        +serif
         display: inline-block
         font-size: 1.4rem
         border: dotted 1px $secondary-color
@@ -242,19 +269,13 @@ $language: ("sass": '\f41e',"sinatra": '\f7bc')
             color: $primary-color
         a
             font-size: 1.2rem
-            border: none
-            text-decoration: underline
-            color: $secondary-color
-            &:hover
-                border: none
-                text-decoration: underline
-                color: $text-color
 
 .timeago
+    +serif
     font-size: 1.4rem
     color: rgba(0,0,0,0.65)
-    margin-top: 1rem
     display: block
+
     &::before
         font-family: "Font Awesome 5 Free"
         content: '\f017'
@@ -262,7 +283,7 @@ $language: ("sass": '\f41e',"sinatra": '\f7bc')
         padding-right: 0.5rem
 
 .toc
-    margin: $body-f-size 0
+    // margin: $body-f-size 0
 
     > ol
         +radius
@@ -270,7 +291,7 @@ $language: ("sass": '\f41e',"sinatra": '\f7bc')
         display: inline-block
         border: 1px solid $secondary-color
         padding: $body-f-size
-        width: 100%
+        // width: 100%
     li
         list-style: none
         margin-left: 2rem
@@ -316,7 +337,7 @@ $language: ("sass": '\f41e',"sinatra": '\f7bc')
         left: -1.2rem
         color: #DD004B
 
-$code-label: ("shell": "terminal","sass": "sass","pug": "pug","html": "書き出されるHTML","css": "css")
+$code-label: ("shell": "ターミナル","sass": "sass","pug": "pug","html": "書き出されるHTML","css": "css")
 
 @each $label, $lang in $code-label
     pre > .#{$label}::before
@@ -403,14 +424,14 @@ $icon-color: ("folder-open": #007bff,"gem": #DD004B,"file": #8b8b8b,"sass": #ff0
     +radius-2
     background-color: #f3f3f3
     display: inline-block
-    // border-radius: .2rem
     padding: 0 0.8rem
     margin-left: -0.8rem
 
 // =====レスポンシブ=====
 @media #{$mq-sm}
     .container
-        max-width: 1140px
+        max-width: 960px
+        // max-width: 1140px
         margin-top: 0
     .contents
         +flex
