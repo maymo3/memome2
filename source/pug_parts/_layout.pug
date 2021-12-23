@@ -6,8 +6,8 @@ html(lang="ja")
         meta(charset="utf-8")
         meta(name="viewport" content="width=device-width, initial-scale=1.0")
         title memome
-        link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&family=Shippori+Mincho&display=swap")
-        link(rel="stylesheet" href= css_path + "/css/normalize.css")
+        link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Shippori+Mincho&display=swap")
+        link(rel="stylesheet" href= css_path + "/css/reset.css")
         link(rel="stylesheet" href= css_path + "/css/solarized-light.css")
         link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css")
         link(rel="stylesheet" href= css_path + "/css/style.css" type="text/css")
@@ -25,7 +25,9 @@ html(lang="ja")
                             span
                             span
                             span
-                        h2.pao #[a(href="../index.html") memome]#[i.fas.fa-chevron-right] #{category_name}
+                        .pao
+                            h1 #[a(href="../index.html") memome]#[i.fas.fa-chevron-right]
+                            h2 #{category_name}
                         ul
                             each article in category_articles
                                 li: a(href= article.path + '.html') #{article.title}
